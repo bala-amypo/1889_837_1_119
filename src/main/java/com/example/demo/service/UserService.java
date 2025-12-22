@@ -1,2 +1,10 @@
 package com.example.demo.service;
-public interface UserService {}
+
+import com.example.demo.model.User;
+
+public interface UserService {
+
+    User findByEmail(String email);
+
+    User findById(Long id);
+}

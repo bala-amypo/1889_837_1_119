@@ -14,4 +14,6 @@ public interface StockService {
     List<Stock> getAllStocks();
 
     void deleteStock(Long id);
+
+    void deactivateStock(Long id);
 }

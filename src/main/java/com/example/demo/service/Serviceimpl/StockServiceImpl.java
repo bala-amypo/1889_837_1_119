@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.serviceimpl;
 
 import com.example.demo.model.Stock;
 import com.example.demo.repository.StockRepository;
+import com.example.demo.service.StockService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,20 +24,18 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public Stock updateStock(Long id, Stock stock) {
-        Stock existing = stockRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Stock not found"));
+        Stock existing = stockRepository.findById(id).orElse(null);
+        if (existing == null) return null;
 
         existing.setTicker(stock.getTicker());
         existing.setCompanyName(stock.getCompanyName());
         existing.setSector(stock.getSector());
-
         return stockRepository.save(existing);
     }
 
     @Override
     public Stock getStockById(Long id) {
-        return stockRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Stock not found"));
+        return stockRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -47,5 +46,14 @@ public class StockServiceImpl implements StockService {
     @Override
     public void deleteStock(Long id) {
         stockRepository.deleteById(id);
+    }
+
+    @Override
+    public void deactivateStock(Long id) {
+        Stock stock = stockRepository.findById(id).orElse(null);
+        if (stock != null) {
+            stock.setIsActive(false);
+            stockRepository.save(stock);
+        }
     }
 }
