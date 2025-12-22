@@ -29,4 +29,6 @@ public class RiskThreshold {
     public UserPortfolio getPortfolio() { return portfolio; }
     public Double getMaxSingleStockPercentage() { return maxSingleStockPercentage; }
     public Double getMaxOverallVolatility() { return maxOverallVolatility; }
+
+
 }
