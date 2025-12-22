@@ -1,2 +1,8 @@
 package com.example.demo.service;
-public interface RiskThresholdService {}
+
+import com.example.demo.model.RiskThreshold;
+
+public interface RiskThresholdService {
+
+    RiskThreshold getThresholdForPortfolio(Long portfolioId);
+}

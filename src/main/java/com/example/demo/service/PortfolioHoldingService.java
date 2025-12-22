@@ -1,2 +1,9 @@
 package com.example.demo.service;
-public interface PortfolioHoldingService {}
+
+import com.example.demo.model.PortfolioHolding;
+import java.util.List;
+
+public interface PortfolioHoldingService {
+
+    List<PortfolioHolding> getHoldingsByPortfolio(Long portfolioId);
+}
