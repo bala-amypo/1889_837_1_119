@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "risk_analysis_results")
@@ -15,40 +15,27 @@ public class RiskAnalysisResult {
     @JoinColumn(name = "portfolio_id")
     private UserPortfolio portfolio;
 
-    private LocalDateTime analysisDate;
+    private Timestamp analysisDate;
 
     private Double highestStockPercentage;
 
-    private Boolean isHighRisk;
+    private boolean highRisk;
 
     public RiskAnalysisResult() {}
 
-    public RiskAnalysisResult(UserPortfolio portfolio,
-                              LocalDateTime analysisDate,
-                              Double highestStockPercentage,
-                              Boolean isHighRisk) {
-        this.portfolio = portfolio;
-        this.analysisDate = analysisDate;
-        this.highestStockPercentage = highestStockPercentage;
-        this.isHighRisk = isHighRisk;
+    public boolean isHighRisk() {
+        return highRisk;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public void setHighRisk(boolean highRisk) {
+        this.highRisk = highRisk;
+    }
 
-    public UserPortfolio getPortfolio() { return portfolio; }
-    public void setPortfolio(UserPortfolio portfolio) { this.portfolio = portfolio; }
+    public Timestamp getAnalysisDate() {
+        return analysisDate;
+    }
 
-    public LocalDateTime getAnalysisDate() { return analysisDate; }
-    public void setAnalysisDate(LocalDateTime analysisDate) {
+    public void setAnalysisDate(Timestamp analysisDate) {
         this.analysisDate = analysisDate;
     }
-
-    public Double getHighestStockPercentage() { return highestStockPercentage; }
-    public void setHighestStockPercentage(Double highestStockPercentage) {
-        this.highestStockPercentage = highestStockPercentage;
-    }
-
-    public Boolean getIsHighRisk() { return isHighRisk; }
-    public void setIsHighRisk(Boolean isHighRisk) { this.isHighRisk = isHighRisk; }
 }
