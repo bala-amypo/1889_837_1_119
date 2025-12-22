@@ -17,14 +17,10 @@ public class UserPortfolio {
     private User user;
 
     private String portfolioName;
-
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "portfolio")
     private List<PortfolioHolding> holdings;
-
-    @OneToMany(mappedBy = "portfolio")
-    private List<RiskAnalysisResult> analysisResults;
 
     public UserPortfolio() {}
 
@@ -35,22 +31,11 @@ public class UserPortfolio {
     }
 
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
     public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
     public String getPortfolioName() { return portfolioName; }
-    public void setPortfolioName(String portfolioName) { this.portfolioName = portfolioName; }
-
     public LocalDateTime getCreatedAt() { return createdAt; }
+
+    public void setUser(User user) { this.user = user; }
+    public void setPortfolioName(String portfolioName) { this.portfolioName = portfolioName; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-
-    public List<PortfolioHolding> getHoldings() { return holdings; }
-    public void setHoldings(List<PortfolioHolding> holdings) { this.holdings = holdings; }
-
-    public List<RiskAnalysisResult> getAnalysisResults() { return analysisResults; }
-    public void setAnalysisResults(List<RiskAnalysisResult> analysisResults) {
-        this.analysisResults = analysisResults;
-    }
 }

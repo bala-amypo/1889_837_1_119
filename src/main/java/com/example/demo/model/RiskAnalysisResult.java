@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "risk_analysis_results")
@@ -15,27 +15,35 @@ public class RiskAnalysisResult {
     @JoinColumn(name = "portfolio_id")
     private UserPortfolio portfolio;
 
-    private Timestamp analysisDate;
-
+    private LocalDateTime analysisDate;
     private Double highestStockPercentage;
-
-    private boolean highRisk;
+    private Boolean isHighRisk;
 
     public RiskAnalysisResult() {}
 
-    public boolean isHighRisk() {
-        return highRisk;
-    }
-
-    public void setHighRisk(boolean highRisk) {
-        this.highRisk = highRisk;
-    }
-
-    public Timestamp getAnalysisDate() {
-        return analysisDate;
-    }
-
-    public void setAnalysisDate(Timestamp analysisDate) {
+    public RiskAnalysisResult(UserPortfolio portfolio, LocalDateTime analysisDate,
+                              Double highestStockPercentage, Boolean isHighRisk) {
+        this.portfolio = portfolio;
         this.analysisDate = analysisDate;
+        this.highestStockPercentage = highestStockPercentage;
+        this.isHighRisk = isHighRisk;
+    }
+
+    public Long getId() { return id; }
+
+    public Double getHighestStockPercentage() {
+        return highestStockPercentage;
+    }
+
+    public void setHighestStockPercentage(Double highestStockPercentage) {
+        this.highestStockPercentage = highestStockPercentage;
+    }
+
+    public Boolean getIsHighRisk() {
+        return isHighRisk;
+    }
+
+    public void setIsHighRisk(Boolean highRisk) {
+        isHighRisk = highRisk;
     }
 }
