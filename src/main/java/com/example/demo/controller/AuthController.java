@@ -1,2 +1,13 @@
 package com.example.demo.controller;
-public class AuthController {}
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    @PostMapping("/login")
+    public String login() {
+        return "Auth endpoint placeholder";
+    }
+}
