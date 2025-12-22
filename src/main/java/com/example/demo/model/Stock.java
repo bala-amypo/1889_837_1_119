@@ -17,8 +17,7 @@ public class Stock {
     private String sector;
     private Boolean isActive;
 
-    public Stock() {
-    }
+    public Stock() {}
 
     public Stock(String ticker, String companyName, String sector, Boolean isActive) {
         this.ticker = ticker;
