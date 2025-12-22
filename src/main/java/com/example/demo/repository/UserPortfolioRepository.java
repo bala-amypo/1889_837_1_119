@@ -1,6 +1,11 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.UserPortfolio;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserPortfolioRepository extends JpaRepository<UserPortfolio, Long> {}
+import java.util.List;
+
+public interface UserPortfolioRepository extends JpaRepository<UserPortfolio, Long> {
+
+    List<UserPortfolio> findByUserId(Long userId);
+}
