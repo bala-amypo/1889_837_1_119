@@ -21,3 +21,4 @@ public class RiskAnalysisServiceImpl implements RiskAnalysisService {
         return repository.findByPortfolioId(portfolioId);
     }
 }
+
