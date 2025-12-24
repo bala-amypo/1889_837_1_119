@@ -1,34 +1,14 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "risk_thresholds")
 public class RiskThreshold {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "portfolio_id")
-    private UserPortfolio portfolio;
-
     private Double maxSingleStockPercentage;
-    private Double maxOverallVolatility;
 
-    public RiskThreshold() {}
-
-    public RiskThreshold(UserPortfolio portfolio, Double maxSingleStockPercentage, Double maxOverallVolatility) {
-        this.portfolio = portfolio;
-        this.maxSingleStockPercentage = maxSingleStockPercentage;
-        this.maxOverallVolatility = maxOverallVolatility;
+    public Double getMaxSingleStockPercentage() {
+        return maxSingleStockPercentage;
     }
 
-    public Long getId() { return id; }
-    public UserPortfolio getPortfolio() { return portfolio; }
-    public Double getMaxSingleStockPercentage() { return maxSingleStockPercentage; }
-    public Double getMaxOverallVolatility() { return maxOverallVolatility; }
-
-
+    public void setMaxSingleStockPercentage(Double maxSingleStockPercentage) {
+        this.maxSingleStockPercentage = maxSingleStockPercentage;
+    }
 }
