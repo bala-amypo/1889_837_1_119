@@ -11,4 +11,9 @@ public class RiskThresholdServiceImpl implements RiskThresholdService {
     public RiskThreshold saveThreshold(RiskThreshold threshold) {
         return threshold;
     }
+
+    @Override
+    public RiskThreshold getThresholdForPortfolio(Long portfolioId) {
+        return null;
+    }
 }
