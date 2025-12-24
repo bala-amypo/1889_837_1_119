@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
+import com.example.demo.security.JwtUtil;
+import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    @PostMapping("/login")
-    public String login() {
-        return "Auth endpoint placeholder";
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
+
+    public AuthController(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
     }
 }
