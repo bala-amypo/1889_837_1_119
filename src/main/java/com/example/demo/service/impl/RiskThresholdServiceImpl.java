@@ -8,11 +8,6 @@ import org.springframework.stereotype.Service;
 public class RiskThresholdServiceImpl implements RiskThresholdService {
 
     @Override
-    public RiskThreshold saveThreshold(RiskThreshold threshold) {
-        return threshold;
-    }
-
-    @Override
     public RiskThreshold getThresholdForPortfolio(Long portfolioId) {
         return null;
     }
