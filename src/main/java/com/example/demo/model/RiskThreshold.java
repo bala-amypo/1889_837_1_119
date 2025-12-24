@@ -42,4 +42,4 @@ public class RiskThreshold {
     public void setMaxRiskScore(Double maxRiskScore) {
         this.maxRiskScore = maxRiskScore;
     }
-}
+} 
