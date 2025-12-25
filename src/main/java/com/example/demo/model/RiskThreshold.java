@@ -3,43 +3,63 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "risk_threshold")
 public class RiskThreshold {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long portfolioId;
+    private Double minValue;
+    private Double maxValue;
+    private String riskLevel;
+    private boolean active;
 
-    private Double maxRiskScore;
+    // ✅ REQUIRED BY TESTS
+    private Double maxSingleStockPercentage;
 
-    // --- Constructors ---
-    public RiskThreshold() {}
-
-    public RiskThreshold(Long portfolioId, Double maxRiskScore) {
-        this.portfolioId = portfolioId;
-        this.maxRiskScore = maxRiskScore;
-    }
-
-    // --- Getters & Setters ---
+    // ===== GETTERS =====
     public Long getId() {
         return id;
     }
 
-    public Long getPortfolioId() {
-        return portfolioId;
+    public Double getMinValue() {
+        return minValue;
     }
 
-    public void setPortfolioId(Long portfolioId) {
-        this.portfolioId = portfolioId;
+    public Double getMaxValue() {
+        return maxValue;
     }
 
-    public Double getMaxRiskScore() {
-        return maxRiskScore;
+    public String getRiskLevel() {
+        return riskLevel;
     }
 
-    public void setMaxRiskScore(Double maxRiskScore) {
-        this.maxRiskScore = maxRiskScore;
+    public boolean isActive() {
+        return active;
     }
-} 
+
+    public Double getMaxSingleStockPercentage() {
+        return maxSingleStockPercentage;
+    }
+
+    // ===== SETTERS =====
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public void setRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setMaxSingleStockPercentage(Double maxSingleStockPercentage) {
+        this.maxSingleStockPercentage = maxSingleStockPercentage;
+    }
+}
