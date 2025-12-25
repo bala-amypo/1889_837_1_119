@@ -8,17 +8,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/holdings")
+@RequestMapping("/holdings")
 public class PortfolioHoldingController {
 
-    private final PortfolioHoldingService holdingService;
+    private final PortfolioHoldingService service;
 
-    public PortfolioHoldingController(PortfolioHoldingService holdingService) {
-        this.holdingService = holdingService;
+    public PortfolioHoldingController(PortfolioHoldingService service) {
+        this.service = service;
     }
 
-    @GetMapping("/{portfolioId}")
+    @PostMapping
+    public ResponseEntity<PortfolioHolding> createHolding(@RequestBody PortfolioHolding holding) {
+        return ResponseEntity.ok(service.createHolding(holding));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PortfolioHolding> updateHolding(
+            @PathVariable Long id,
+            @RequestBody PortfolioHolding holding
+    ) {
+        return ResponseEntity.ok(service.updateHolding(id, holding));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PortfolioHolding> getHolding(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getHoldingById(id));
+    }
+
+    @GetMapping("/portfolio/{portfolioId}")
     public ResponseEntity<List<PortfolioHolding>> getHoldings(@PathVariable Long portfolioId) {
-        return ResponseEntity.ok(holdingService.getHoldingsByPortfolio(portfolioId));
+        return ResponseEntity.ok(service.getHoldingsByPortfolio(portfolioId));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteHolding(@PathVariable Long id) {
+        service.deleteHolding(id);
+        return ResponseEntity.ok().build();
     }
 }
